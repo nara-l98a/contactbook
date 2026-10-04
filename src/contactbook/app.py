@@ -79,6 +79,8 @@ def import_csv(path: Path, csv_path: Path) -> int:
     except (OSError, UnicodeError, csv.Error) as e: raise ContactError(f"无法读取 CSV: {e}")
     if not rows: raise ContactError("CSV 没有联系人数据")
     if any(None in row for row in rows): raise ContactError("CSV 行包含多于表头的字段")
+    if any(any(value is None for value in row.values()) for row in rows):
+        raise ContactError("CSV 行缺少字段")
     incoming = [validate_contact(dict(r)) for r in rows]
     emails = [x["email"].casefold() for x in incoming if x["email"]]
     if len(emails) != len(set(emails)): raise ContactError("CSV 内有重复邮箱，未导入")

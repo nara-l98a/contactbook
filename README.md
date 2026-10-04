@@ -36,7 +36,7 @@ contactbook --data ./contacts.json export ./contacts-backup.csv
 contactbook --data ./contacts.json import ./examples/contacts.csv
 ```
 
-错误会写到标准错误并以状态码 2 退出，例如缺少姓名、邮箱格式不正确、CSV 表头/字段数错误、重复邮箱或文件不可读时均会明确报错。
+错误会写到标准错误并以状态码 2 退出，例如缺少姓名、邮箱格式不正确、CSV 表头/字段数错误（包括缺少字段）、重复邮箱或文件不可读时均会明确报错。
 
 ## 全部命令参数
 

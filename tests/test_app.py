@@ -49,6 +49,7 @@ class ContactbookTests(unittest.TestCase):
         for content in (
             "name,email,phone,company,tags\n甲,a@example.org,,,\n乙,b@example.org,,,,EXTRA\n",
             "name,name,email,phone,company,tags\n甲,乙,a@example.org,,,\n",
+            "name,email,phone,company,tags\n甲,a@example.org,,\n",
         ):
             csv_path = Path(self.tmp.name) / "bad.csv"
             csv_path.write_text(content, encoding="utf-8")
